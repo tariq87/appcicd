@@ -52,7 +52,7 @@ def installDocker() {
         sudo dnf update -y
         sudo dnf install docker -y
         sudo systemctl start docker
-        sudo usermod -a -G docker ec2-user
+        sudo usermod -a -G docker ${USER}
     '''
 }
 

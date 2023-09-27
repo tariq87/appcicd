@@ -49,11 +49,10 @@ pipeline {
 // Function to install Docker
 def installDocker() {
     sh '''
-        sudo yum update -y
-        sudo amazon-linux-extras install docker -y
-        sudo service docker start
+        sudo dnf update -y
+        sudo dnf install docker -y
+        sudo systemctl start docker
         sudo usermod -a -G docker ec2-user
-        sudo chkconfig docker on
     '''
 }
 

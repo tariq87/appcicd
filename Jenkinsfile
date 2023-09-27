@@ -23,10 +23,10 @@ pipeline {
         stage('Build & Push') {
             steps {
                 script {
-                    sh "docker build -t $DOCKER_HUB_REPO ."
+                    sh "sudo docker build -t $DOCKER_HUB_REPO ."
                     withCredentials([usernamePassword(credentialsId: 'dockerHubCreds', passwordVariable: 'DOCKER_HUB_PASS', usernameVariable: 'DOCKER_HUB_USER')]) {
-                        sh "docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASS"
-                        sh "docker push $DOCKER_HUB_REPO"
+                        sh "sudo docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASS"
+                        sh "sudo docker push $DOCKER_HUB_REPO"
                     }
                 }
             }
